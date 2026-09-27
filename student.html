@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddStudent</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+    <div id="studentForm">
+    <h2>Add Student</h2>
+
+    <label>Student Photo</label>
+    <input type="file" id="photo" accept="image/*" required>
+        <br><br>
+    <label for="id">StudentId:</label>
+    <input type="text" placeholder="Enter Student ID" required>
+    <br><br>
+
+    <label for="rollno">Roll Number:</label>
+    <input type="text" placeholder="Enter Roll No" required>
+    <br><br>
+
+     <label>Select Class:</label>
+    <select id="class" onchange="toggleStream()">
+    <option value="">--Select Class--</option>
+    <option value="6">6th</option>
+    <option value="7">7th</option>
+    <option value="8">8th</option>
+    <option value="9">9th</option>
+    <option value="10">10th</option>
+    <option value="11">11th</option>
+    <option value="12">12th</option>
+    </select>
+
+    <div id="streamDiv">
+        <br>
+    <label>Select Stream:</label>
+    <select id="stream">
+    <option value="">--Select Stream--</option>
+    <option value="Science">Science</option>
+    <option value="Commerce">Commerce</option>
+    <option value="Arts">Arts</option>
+    </select>
+    </div>
+    
+    <br><br>
+    <label for="studentName">Student Name:</label>
+    <input type="text" placeholder="Enter Student Name" required>
+    <br><br>
+
+    <label for="fatherName">Father's Name:</label>
+    <input type="text" placeholder="Enter Father's Name" required>
+    <br><br>
+
+    <label for="MotherName">Mother's Name:</label>
+    <input type="text" placeholder="Enter Mother's Name" required>
+    <br><br>
+
+    <label for="Address">Address:</label>
+    <textarea placeholder="Enter Address" rows="4" cols="30" required></textarea>
+    <br><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" placeholder="Enter Phone Number" required>
+    <br><br>
+
+    <label for="dob">Date Of Birth:</label>
+    <br>
+    <input type="date" required>
+    <br><br>
+
+    <label for="aadhar">Aadhaar Number:</label>
+    <input type="text" placeholder="Aadhaar Number" maxlength="12">
+    <br><br>
+
+    <label for="Accnumber">Account Number:</label>
+    <input type="text" placeholder="Bank Account Number">
+    <br><br>
+
+    <label for="IFSC">IFSC Code:</label>
+    <input type="text" placeholder="IFSC Code">
+    <br><br>
+
+    <button type="submit">💾 Save Student</button>
+
+</div>
+
+<script>
+function openForm() {
+    document.getElementById("studentForm").style.display = "block";
+}
+
+function toggleStream() {
+let selectedClass = document.getElementById("class").value;
+let streamDiv = document.getElementById("streamDiv");
+ 
+if (selectedClass === "11" || selectedClass === "12") {
+streamDiv.style.display = "block";
+} else {
+streamDiv.style.display = "none";
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+*{
+    font-family: 'Inter', sans-serif;
+    background-color: e5e5e5;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5e5;
+}
+
+#studentForm{
+    width: 500px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+input,
+select,
+textarea {
+    width: 250px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 270px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #14213d;
+    color: white;
+    cursor: pointer;
+}
