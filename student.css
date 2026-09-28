@@ -9,6 +9,16 @@ body{
     background-color: #e5e5e5;
 }
 
+#nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    margin-top: 0;
+    background-color: #14213d;
+    
+}
+
 #studentForm{
     width: 500px;
     margin: 30px auto;
@@ -27,7 +37,7 @@ textarea {
     font-size: 16px;
 }
 
-button {
+#btn1{
     width: 270px;
     padding: 10px;
     border: none;
