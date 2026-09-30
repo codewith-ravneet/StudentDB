@@ -1,31 +1,55 @@
 function openForm() {
     window.location.href = "student.html";
 }
+
+
+// EDIT
+function editStudent(index) {
+    localStorage.setItem("editIndex", index);
+    window.location.href = "student.html";
+}
+
+
+// DELETE
+function deleteStudent(index) {
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    const confirmDelete = confirm("Are you sure you want to delete this student?");
+
+    if (confirmDelete) {
+        students.splice(index, 1);
+        localStorage.setItem("students", JSON.stringify(students));
+        location.reload();
+    }
+}
+
+
+// Get container
 const container = document.getElementById("studentContainer");
+
+
+// Get students
 const students = JSON.parse(localStorage.getItem("students")) || [];
 
-students.forEach(function(student) {
+
+// Create cards
+students.forEach(function (student, index) {
 
     const card = document.createElement("div");
-
     card.classList.add("student-card");
-
     card.innerHTML = `
-        <img src="${student.photo}" alt="Student Photo">
+        <img src="${student.photo}" class="student-photo">
         <h2>${student.studentName}</h2>
-        <p><strong>Student ID:</strong> ${student.studentId}</p>
-        <p><strong>Roll No:</strong> ${student.rollno}</p>
-        <p><strong>Class:</strong> ${student.class}</p>
-        <p><strong>Stream:</strong> ${student.stream}</p>
-         <p><strong>DOB:</strong> ${student.Dob}</p>
-        <p><strong>Father:</strong> ${student.fathername}</p>
-        <p><strong>Mother:</strong> ${student.mothername}</p>
-        <p><strong>Phone:</strong> ${student.phoneNo}</p>
-        <p><strong>Address:</strong> ${student.address}</p>
-        <p><strong>Aadhaar:</strong> ${student.AadharNumber}</p>
-        <p><strong>Bank Account:</strong> ${student.accountNumber}</p>
-        <p><strong>IFSC:</strong> ${student.ifsc}</p>
-      
+        <p><strong>Father Name:</strong>${student.fathername}</p>
+
+        <p><strong>DOB:</strong>${student.Dob}</p>
+
+        <p><strong>Phone:</strong>${student.phoneNo}</p>
+
+        <p><strong>Address:</strong>${student.address}</p>
+
+        <button id="btn1" onclick="editStudent(${index})">Edit</button>
+
+        <button id="btn1" onclick="deleteStudent(${index})">Delete</button>
     `;
 
     container.appendChild(card);

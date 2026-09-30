@@ -5,46 +5,79 @@ function openForm() {
 
 const form = document.getElementById("studentForm");
 
-form.addEventListener("submit", function (event) {
 
+// Check whether we are editing
+const editIndex = localStorage.getItem("editIndex");
+
+
+// If Edit button was clicked
+if (editIndex !== null) {
+    const students =JSON.parse(localStorage.getItem("students")) || [];
+    const student = students[editIndex];
+
+    document.getElementById("studentname").value =student.studentName;
+    document.getElementById("fatherName").value =student.fathername;
+    document.getElementById("dob").value =student.Dob;
+    document.getElementById("address").value =student.address;
+    document.getElementById("phoneNo").value =student.phoneNo;
+}
+
+
+// Save button
+form.addEventListener("submit", function(event) {
     event.preventDefault();
-
     const photo = document.getElementById("photo");
     const file = photo.files[0];
 
-    const reader = new FileReader();
-    reader.onload = function () {
+    let students =JSON.parse(localStorage.getItem("students")) || [];
 
+
+    function saveStudent(photoData) {
         const student = {
-
-            photo: reader.result,
-            studentId: document.getElementById("id").value,
-            rollno: document.getElementById("rollno").value,
-            studentName: document.getElementById("studentname").value,
-            class: document.getElementById("class").value,
-            stream: document.getElementById("stream").value,
-            fathername: document.getElementById("fatherName").value,
-            mothername: document.getElementById("mothername").value,
-            address: document.getElementById("address").value,
-            phoneNo: document.getElementById("phoneNo").value,
-            Dob: document.getElementById("dob").value,
-            AadharNumber : document.getElementById("aadhar").value,
-            accountNumber : document.getElementById("accountNumber").value,
-            ifsc: document.getElementById("ifsc").value
+            photo: photoData,
+            studentName:document.getElementById("studentname").value,
+            fathername:document.getElementById("fatherName").value,
+            Dob:document.getElementById("dob").value,
+            address:document.getElementById("address").value,phoneNo:document.getElementById("phoneNo").value
         };
 
 
-let students = JSON.parse(localStorage.getItem("students")) || [];
+        // EDIT
+        if (editIndex !== null) {
+            students[editIndex] = student;
+            localStorage.removeItem("editIndex");
+        }
 
-    students.push(student);
-    localStorage.setItem("students", JSON.stringify(students));
-    
-    window.location.href = "index.html";
+        // ADD NEW
+        else {
+            students.push(student);
+        }
+        localStorage.setItem("students",JSON.stringify(students));
+        window.location.href = "index.html";
+    }
+
+
+    // New photo selected
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+        saveStudent(reader.result);
     };
 
-    if (file) {
         reader.readAsDataURL(file);
-    } else {
+    }
+
+
+    // Editing but keeping old photo
+    else if (editIndex !== null) {
+        const oldPhoto =students[editIndex].photo;
+        saveStudent(oldPhoto);
+    }
+
+
+    // New student must have photo
+    else {
         alert("Please select a student photo.");
     }
+
 });

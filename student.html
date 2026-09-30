@@ -14,42 +14,8 @@
     <h2>Add Student</h2>
 
     <label>Student Photo</label>
-    <input type="file" id="photo" accept="image/*" required>
+    <input type="file" id="photo" accept="image/*">
         <br><br>
-    <label for="id">StudentId:</label>
-    <input type="text" id="id" placeholder="Enter Student ID" required>
-    <br><br>
-
-    <label for="rollno">Roll Number:</label>
-    <input type="text" id="rollno" placeholder="Enter Roll No" required>
-    <br><br>
-
-
-    
-     <label>Select Class:</label>
-    <select id="class" onchange="toggleStream()">
-    <option value="">--Select Class--</option>
-    <option value="6">6th</option>
-    <option value="7">7th</option>
-    <option value="8">8th</option>
-    <option value="9">9th</option>
-    <option value="10">10th</option>
-    <option value="11">11th</option>
-    <option value="12">12th</option>
-    </select>
-
-    <div id="streamDiv">
-        <br>
-    <label>Select Stream:</label>
-    <select id="stream">
-    <option value="">--Select Stream--</option>
-    <option value="N/A">NA</option>
-    <option value="Science">Science</option>
-    <option value="Commerce">Commerce</option>
-    <option value="Arts">Arts</option>
-    </select>
-    </div>
-    <br><br>
 
     <label for="studentName">Student Name:</label>
     <input type="text" id="studentname" placeholder="Enter Student Name" required>
@@ -60,8 +26,8 @@
     <input type="text" id="fatherName" placeholder="Enter Father's Name" required>
     <br><br>
 
-    <label for="MotherName">Mother's Name:</label>
-    <input type="text" id="mothername" placeholder="Enter Mother's Name" required>
+    <label for="dob">Date Of Birth:</label>
+    <input type="date" id="dob" required>
     <br><br>
 
     <label for="Address">Address:</label>
@@ -72,23 +38,8 @@
     <input type="tel" id="phoneNo" placeholder="Enter Phone Number" required>
     <br><br>
 
-    <label for="dob">Date Of Birth:</label>
-    <br>
-    <input type="date" id="dob" required>
-    <br><br>
 
-    <label for="aadhar">Aadhaar Number:</label>
-    <input type="text" id="aadhar" placeholder="Aadhaar Number" maxlength="12">
-    <br><br>
-
-    <label for="Accnumber">Account Number:</label>
-    <input type="text" id="accountNumber" placeholder="Bank Account Number">
-    <br><br>
-
-    <label for="IFSC">IFSC Code:</label>
-    <input type="text" id="ifsc" placeholder="IFSC Code">
-    <br><br>
-
+    
     <button type="submit" id="btn1">💾 Save Student</button>
 
 </form>
